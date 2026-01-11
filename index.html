@@ -84,7 +84,7 @@ button.secondary{
 <div class="card hidden" id="q2">
     <h3>Seni çok seviyorum…<br>Sen de beni seviyor musun? ❤️</h3>
     <button id="yesBtn" onclick="next('q2','q3')">Evet</button>
-    <button id="noBtn" class="secondary" onclick="growYes()">Hayır</button>
+    <button class="secondary" onclick="growYes()">Hayır</button>
 </div>
 
 <!-- 3. MESAJ -->
@@ -121,11 +121,15 @@ button.secondary{
     <source src="ask.mp3" type="audio/mpeg">
 </audio>
 
-<button id="musicBtn" onclick="playMusic()">🎵</button>
-
 <script>
 function startAll(){
-    document.getElementById("music").play();
+    // Müzik: kullanıcı tıklamasıyla başlar (tarayıcı uyumlu)
+    const music = document.getElementById("music");
+    music.volume = 0.6;
+    music.play().catch(() => {
+        console.log("Tarayıcı sesi engelledi, lütfen bir butona tıklayın");
+    });
+
     next('q1','q2');
 }
 
@@ -137,15 +141,14 @@ function next(hideId, showId){
 let size = 1;
 function growYes(){
     size += 0.25;
-    document.getElementById("yesBtn").style.transform = "scale(" + size + ")";
+    document.getElementById("yesBtn").style.transform = `scale(${size})`;
 }
 
 function playMusic(){
-    document.getElementById("music").play();
+    const music = document.getElementById("music");
+    music.play();
 }
 </script>
 
 </body>
 </html>
-`
-
