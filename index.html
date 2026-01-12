@@ -61,13 +61,6 @@ button.secondary{
     width:100%;
     border-radius:12px;
 }
-
-#musicBtn{
-    position:fixed;
-    bottom:20px;
-    right:20px;
-    z-index:999;
-}
 </style>
 </head>
 
@@ -118,18 +111,16 @@ button.secondary{
 
 <!-- MÜZİK -->
 <audio id="music" loop>
-    <source src="ask.mp3" type="audio/mpeg">
+    <source src="IDEA15.mp3" type="audio/mpeg">
 </audio>
 
 <script>
 function startAll(){
-    // Müzik: kullanıcı tıklamasıyla başlar (tarayıcı uyumlu)
     const music = document.getElementById("music");
     music.volume = 0.6;
     music.play().catch(() => {
-        console.log("Tarayıcı sesi engelledi, lütfen bir butona tıklayın");
+        console.log("Tarayıcı kullanıcı etkileşimi bekliyor.");
     });
-
     next('q1','q2');
 }
 
@@ -143,12 +134,8 @@ function growYes(){
     size += 0.25;
     document.getElementById("yesBtn").style.transform = `scale(${size})`;
 }
-
-function playMusic(){
-    const music = document.getElementById("music");
-    music.play();
-}
 </script>
 
 </body>
 </html>
+
